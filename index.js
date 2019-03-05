@@ -16,8 +16,10 @@ var run = function(args, done, additionalWork) {
 };
 
 var check = function(additionalWork) {
+  console.log(process.platform);
   if (process.platform === 'win32') {
     var cmd = process.argv[1];
+    console.log('called with' + cmd);
     debug('processing squirrel command `%s`', cmd);
     var target = path.basename(process.execPath);
 
