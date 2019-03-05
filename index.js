@@ -12,7 +12,7 @@ var run = function(args, done, additionalWork) {
     }).on('close', resolve());
   });
 
-  Promise.all[updatePromise, additionalWork()].then(done);
+  Promise.all([updatePromise, additionalWork()]).then(done);
 };
 
 var check = function(additionalWork) {
