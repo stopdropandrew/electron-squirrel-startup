@@ -12,14 +12,15 @@ var run = function(args, done, additionalWork) {
     }).on('close', resolve());
   });
 
-  Promise.all([updatePromise, additionalWork()]).then(done);
+  var promises = [updatePromise];
+  if(additionalWork) { promises.push(additionalWork()) };
+
+  Promise.all(promises).then(done);
 };
 
-var check = function(additionalWork) {
-  console.log(process.platform);
+var check = function(additionalWork = {}) {
   if (process.platform === 'win32') {
     var cmd = process.argv[1];
-    console.log('called with' + cmd);
     debug('processing squirrel command `%s`', cmd);
     var target = path.basename(process.execPath);
 
