@@ -37,4 +37,4 @@ var check = function(additionalWork) {
   return false;
 };
 
-module.exports = check();
+module.exports = check;
