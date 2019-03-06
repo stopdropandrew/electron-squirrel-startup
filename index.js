@@ -15,7 +15,11 @@ var run = function(args, done, additionalWork) {
   var promises = [updatePromise];
   if(additionalWork) { promises.push(additionalWork()) };
 
-  Promise.all(promises).then(done);
+  console.log(promises);
+  console.log('all promises');
+  var allPromises = Promise.all(promises);
+  console.log(allPromises);
+  allPromises.then(done);
 };
 
 var check = function(additionalWork = {}) {
